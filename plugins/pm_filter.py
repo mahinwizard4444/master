@@ -52,6 +52,12 @@ async def filter(client, message):
         search = message.text
         files = await get_filter_results(query=search)
         if files:
+            results.append(
+                   [
+                       InlineKeyboardButton("🎥:мσνιєѕ⭕", url="https://t.me/joinchat/dZmnXiQ5a2ViMWZl"),
+                       InlineKeyboardButton("📽:ѕєяιєѕ⭕", url="https://t.me/joinchat/vz04fx0LgSI5MzZl")
+                   ]
+               )
             for file in files:
                 file_id = file.file_id
                 filename = f"💽:[{get_size(file.file_size)}]📂{file.file_name}"
@@ -102,7 +108,7 @@ async def filter(client, message):
         if poster:
             await message.reply_photo(photo=poster, caption=f"<b>Here is What I Found In My Database For Your Query {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
         else:
-            await message.reply_text(f"<b>Here are the Results for :<code>{search}</code> ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(chat_id = update.chat.id, photo="https://telegra.ph/file/4e1977436f7f07662db3a.jpg", caption="<b>Here are the Results for :<code>{search}</code> ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons), reply_to_message_id = update.message.id)
 
 @Client.on_message(filters.text & filters.group & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.group & filters.incoming)
 async def group(client, message):
@@ -147,7 +153,7 @@ async def group(client, message):
             if poster:
                 await message.reply_photo(photo=poster, caption=f"<b>📀: Requested-Movie: <code>{search}</code>\n\n♻️: Powered-By: @PrimeFlixMedia_All­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
             else:
-                await message.reply_text(f"<b>📀:Requested-Movie:<code>{search}</code>‌‌‌‌‎/n/n♻️Powered-By: @PrimeFlixMedia_All ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_photo(chat.id = update.chat.id, photo="https://telegra.ph/file/4e1977436f7f07662db3a.jpg", caption="<b>📀:Requested-Movie:<code>{search}</code>‌‌‌‌‎/n/n♻️Powered-By: @PrimeFlixMedia_All ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons), reply_to_message_id = update.message.id)
             return
 
         data = BUTTONS[keyword]
