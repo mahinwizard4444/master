@@ -52,7 +52,7 @@ async def filter(client, message):
         search = message.text
         files = await get_filter_results(query=search)
         if files:
-            results.append(
+            btn.append(
                    [
                        InlineKeyboardButton("🎥:мσνιєѕ⭕", url="https://t.me/joinchat/dZmnXiQ5a2ViMWZl"),
                        InlineKeyboardButton("📽:ѕєяιєѕ⭕", url="https://t.me/joinchat/vz04fx0LgSI5MzZl")
