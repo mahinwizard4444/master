@@ -2,7 +2,7 @@ import os
 import pymongo
 
 if bool(os.environ.get("WEBHOOK", False)):
-    from sample_info import Config
+    from info import Config
 else:
     from config import Config
  
