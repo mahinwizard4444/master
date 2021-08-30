@@ -1,6 +1,6 @@
 #Edited by @CLaY995
 from info import AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, API_KEY, AUTH_GROUPS, START_MSG
-from sample_info import HELP_TEXT, MAL_HELP_TXT
+from sample_info import HELP_TEXT, MAL_HELP_TXT, MANUAL_FLTR_HELP_MSG
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
 import re
@@ -287,15 +287,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "start":
             buttons = [
                 [
-                    InlineKeyboardButton("My-CreatoR🧑‍💻", url="https://t.me/CLaY995")
+                    InlineKeyboardButton("My CreatoR🧑‍💻", url="https://t.me/CLaY995")
                 ],
                 [
                     InlineKeyboardButton("🔎 Search Here", switch_inline_query_current_chat=''),
                     InlineKeyboardButton("🔗 Our-LinkZ", url="https://t.me/PrimeFlixMedia_All")
                 ],
                 [
-                    InlineKeyboardButton("About", callback_data="about"),
-                    InlineKeyboardButton("Help", callback_data="help")
+                    InlineKeyboardButton("About 👤", callback_data="about"),
+                    InlineKeyboardButton("Help 💭", callback_data="help")
                 ],
                 [
                     InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/PFM_MediaSearchBot?startgroup=true")
@@ -313,15 +313,28 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton('Back', callback_data='start')
                 ]
                 ]
-            await query.message.edit(text="<b>🧑‍💻Creator : <a href='https://t.me/ClaeyZ_UBot'>CLÆ͜͡Ｙ</a>\n🌏Language : <code>Python3</code>\n📚Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n📋Source-Code : <a href='https://t.me/Oomban_ULLATH'>🔘Click here</a>\n📡Ma-Channel : <a href='https://t.me/PrimeFlixMedia_All'>PFM Links</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=False)
+            await query.message.edit(text="<b>🧑‍💻Creator : <a href='https://t.me/ClaeyZ_UBot'>CLÆ͜͡Ｙ</a>\n🌏Language : <code>Python3</code>\n📚Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n📋Source-Code : <a href='https://t.me/Oomban_ULLATH'>🔘Click here</a>\n📡Ma-Channel : <a href='https://t.me/PrimeFlixMedia_All'>PFM Links</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
+        elif quey.data == "manual_fltr_help"
+            buttons = [
+                [
+                    InlineKeyboardButton('🔙 Back', callback_data='help'),
+                    InlineKeyboardButton('HOME 🏡', callback_data='start')
+                ]
+                ]
+            await query.message.edit(MANUAL_FLTR_HELP_MSG, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
         elif query.data == "help":
             buttons = [
                 [
+                    InlineKeyboardButton('Manual Filter 🔧', callback_data='manual_fltr_help')
+                ],
+                [
                     InlineKeyboardButton('Malayalam Translation 🌐', callback_data='mal_help')
                 ],
                 [
-                    InlineKeyboardButton('Home', callback_data='start')
+                    InlineKeyboardButton('About 👤', callback_data='about'),
+                    InlineKeyboardButton('🔙 Back', callback_data='start')
                 ]
                 ]
             await query.message.edit(HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
@@ -329,7 +342,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "mal_help":
             buttons = [
                 [
-                    InlineKeyboardButton('Home', callback_data='start')
+                    InlineKeyboardButton('🔙 Back', callback_data='help'),
+                    InlineKeyboardButton('HOME 🏡', callback_data='start')
                 ]
                 ]
             await query.message.edit(MAL_HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
