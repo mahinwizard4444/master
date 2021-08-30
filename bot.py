@@ -1,3 +1,6 @@
+import os
+import pyrogram
+
 import logging
 import logging.config
 
