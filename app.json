@@ -17,6 +17,10 @@
     "website": "https://github.com/CLaY9950/Media-Search-bot",
     "repository": "https://github.com/CLaY9950/Media-Search-bot",
     "env": {
+        "WEBHOOK": {
+            "description": "No Need to Change this Field"
+            "value": "ANYTHING"
+        },
         "BOT_TOKEN": {
             "description": "Your bot token.",
             "value": ""
@@ -88,6 +92,16 @@
         "CACHE_TIME": {
             "description": "The maximum amount of time in seconds that the result of the inline query may be cached on the server",
             "value": "300",
+            "required": false
+        },
+        "SAVE_USER": {
+            "description": "Do you need to save user details? Usefull for getting userinfo and total user counts. May reduce filter capacity. Give yes or no",
+            "value": "no",
+            "required": false
+        },
+        "HEROKU_API_KEY": {
+            "description": "To check dyno status. Go to https://dashboard.heroku.com/account, scroll down and press Reveal API",
+            "value": "None",
             "required": false
         }
     },
