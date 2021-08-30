@@ -1,14 +1,120 @@
 # Code Edited by @CLaY995
+
+import math
+import json
+import time
+import shutil
+import heroku3
+import requests
+
 import os
 import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
-from sample_info import HELP_TEXT, MAL_HELP_TXT
+from sample_info import HELP_TEXT, MAL_HELP_TXT, MANUAL_FLTR_HELP_MSG
 from utils import Media, get_file_details
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 bot_logo = "https://telegra.ph/file/c3276eacd309bf0715d3e.jpg"
+
+if bool(os.environ.get("WEBHOOK", False)):
+    from info import Config
+else:
+    from config import Config
+
+from plugins.helpers import humanbytes
+from plugins.filters_mdb import filter_stats
+from plugins.users_mdb import add_user, find_user, all_users
+
+
+@Client.on_message(filters.command('id') & (filters.private | filters.group))
+async def showid(client, message):
+    chat_type = message.chat.type
+
+    if chat_type == "private":
+        user_id = message.chat.id
+        await message.reply_text(
+            f"Your ID : `{user_id}`",
+            parse_mode="md",
+            quote=True
+        )
+    elif (chat_type == "group") or (chat_type == "supergroup"):
+        user_id = message.from_user.id
+        chat_id = message.chat.id
+        if message.reply_to_message:
+            reply_id = f"Replied User ID : `{message.reply_to_message.from_user.id}`"
+        else:
+            reply_id = ""
+        await message.reply_text(
+            f"Your ID : `{user_id}`\nThis Group ID : `{chat_id}`\n\n{reply_id}",
+            parse_mode="md",
+            quote=True
+        )
+
+
+@Client.on_message(filters.command('info') & (filters.private | filters.group))
+async def showinfo(client, message):
+    try:
+        cmd, id = message.text.split(" ", 1)
+    except:
+        id = False
+        pass
+
+    if id:
+        if (len(id) == 10 or len(id) == 9):
+            try:
+                checkid = int(id)
+            except:
+                await message.reply_text("__Enter a valid USER ID__", quote=True, parse_mode="md")
+                return
+        else:
+            await message.reply_text("__Enter a valid USER ID__", quote=True, parse_mode="md")
+            return           
+
+        if Config.SAVE_USER == "yes":
+            name, username, dcid = await find_user(str(id))
+        else:
+            try:
+                user = await client.get_users(int(id))
+                name = str(user.first_name + (user.last_name or ""))
+                username = user.username
+                dcid = user.dc_id
+            except:
+                name = False
+                pass
+
+        if not name:
+            await message.reply_text("__USER Details not found!!__", quote=True, parse_mode="md")
+            return
+    else:
+        if message.reply_to_message:
+            name = str(message.reply_to_message.from_user.first_name\
+                    + (message.reply_to_message.from_user.last_name or ""))
+            id = message.reply_to_message.from_user.id
+            username = message.reply_to_message.from_user.username
+            dcid = message.reply_to_message.from_user.dc_id
+        else:
+            name = str(message.from_user.first_name\
+                    + (message.from_user.last_name or ""))
+            id = message.from_user.id
+            username = message.from_user.username
+            dcid = message.from_user.dc_id
+    
+    if not str(username) == "None":
+        user_name = f"@{username}"
+    else:
+        user_name = "none"
+
+    await message.reply_text(
+        f"<b>Name</b> : {name}\n\n"
+        f"<b>User ID</b> : <code>{id}</code>\n\n"
+        f"<b>Username</b> : {user_name}\n\n"
+        f"<b>Permanant USER link</b> : <a href='tg://user?id={id}'>Click here!</a>\n\n"
+        f"<b>DC ID</b> : {dcid}\n\n",
+        quote=True,
+        parse_mode="html"
+    )
 
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
@@ -213,10 +319,23 @@ async def bot_info(bot, message):
         ]
     await message.reply(text="<b>Developer : <a href='https://t.me/CLaY995'>CLAEY</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://t.me/Oomban_ULLATH'>Click here</a>\nUpdate Channel : <a href='https://t.me/PrimeFlixMedia_All'>👉😁😁👈</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
+@Client.on_message(filters.command('manual_fltr_help'))
+async def manual_fltr_help(bot, message):
+    buttons = [
+        [
+            InlineKeyboardButton('Back', callback_data='help')
+        ],
+        [
+            InlineKeyboardButton('HOME', callback_data='start')
+        ]
+        ]
+    await message.reply(MANUAL_FLTR_HELP_MSG, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
 @Client.on_message(filters.command('mal_help'))
 async def mal_help(bot, message):
     buttons = [
         [
+            InlineKeyboardButton('🔙 Back', callback_data='help'),
             InlineKeyboardButton('Home', callback_data='start')
         ]
         ]
@@ -226,10 +345,14 @@ async def mal_help(bot, message):
 async def help(bot, message):
     buttons = [
         [
+            InlineKeyboardButton('Manual Filter', callback_data='manual_fltr_help')
+        ],
+        [
             InlineKeyboardButton('Malayalam Translation 🌐', callback_data='mal_help')
         ],
         [
-            InlineKeyboardButton('Home', callback_data='start')
+            InlineKeyboardButton('About 👤', callback_data='about'),
+            InlineKeyboardButton('🔙 Back', callback_data='start')
         ]
         ]
     await message.reply(HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
