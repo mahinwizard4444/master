@@ -1,3 +1,6 @@
+import os
+import time
+
 import re
 from os import environ
 
@@ -21,11 +24,29 @@ AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 auth_channel = environ.get('AUTH_CHANNEL')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else auth_channel
 AUTH_GROUPS = [int(admin) for admin in environ.get("AUTH_GROUPS", "").split()]
+# To save user details (userfull for getting user info & total user count)
+# May reduce filter capacity
+# Give Yes or No
+SAVE_USER = os.environ.get("SAVE_USER", "no").lower()
+
+# To check dyno status
+HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", "")
+
+# Optional - To set alternative Bot Commands.
+ADD_FILTER_CMD = os.environ.get("ADD_FILTER_CMD", "add")
+DELETE_FILTER_CMD = os.environ.get("DELETE_FILTER_CMDD", "del")
+DELETE_ALL_CMD = os.environ.get("DELETE_ALL_CMDD", "delall")
+CONNECT_COMMAND = os.environ.get("CONNECT_COMMANDD", "connect")
+DISCONNECT_COMMAND = os.environ.get("DISCONNECT_COMMANDD", "disconnect")
+
 
 # MongoDB information
 DATABASE_URI = environ['DATABASE_URI']
 DATABASE_NAME = environ['DATABASE_NAME']
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+
+# To record the start Time of the Bot.
+BOT_START_TIME = time.time()
 
 # Messages
 default_start_msg = """
