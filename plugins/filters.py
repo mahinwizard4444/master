@@ -7,7 +7,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 if bool(os.environ.get("WEBHOOK", False)):
-    from sample_config import Config
+    from info import Config
 else:
     from config import Config
 
@@ -19,8 +19,8 @@ from database.filters_mdb import(
    count_filters
 )
 
-from database.connections_mdb import active_connection
-from database.users_mdb import add_user, all_users
+from plugins.connections_mdb import active_connection
+from plugins.users_mdb import add_user, all_users
 
 from plugins.helpers import parser,split_quotes
 
@@ -55,7 +55,7 @@ async def addfilter(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS)):
+    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS_1)):
         return
         
 
@@ -202,7 +202,7 @@ async def get_all(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS)):
+    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS_1)):
         return
 
     texts = await get_filters(grp_id)
@@ -258,7 +258,7 @@ async def deletefilter(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS)):
+    if not ((st.status == "administrator") or (st.status == "creator") or (str(userid) in Config.AUTH_USERS_1)):
         return
 
     try:
@@ -304,7 +304,7 @@ async def delallconfirm(client, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if (st.status == "creator") or (str(userid) in Config.AUTH_USERS):
+    if (st.status == "creator") or (str(userid) in Config.AUTH_USERS_1):
         await message.reply_text(
             f"This will delete all filters from '{title}'.\nDo you want to continue??",
             reply_markup=InlineKeyboardMarkup([
