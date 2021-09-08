@@ -97,8 +97,9 @@ async def start(bot, cmd):
             )
         )
     else:
-        await cmd.reply_text(
-            START_MSG.format(cmd.from_user.mention),
+        await cmd.reply_photo(
+            photo='https://telegra.ph/file/b2ac0ff64559f39fd8054.jpg',
+            caption=START_MSG.format(cmd.from_user.mention),
             parse_mode="html",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -211,7 +212,7 @@ async def bot_info(bot, message):
             InlineKeyboardButton('Back', callback_data='start')
         ]
         ]
-    await message.reply(text="<b>Developer : <a href='https://t.me/CLaY995'>CLAEY</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://t.me/Oomban_ULLATH'>Click here</a>\nUpdate Channel : <a href='https://t.me/PrimeFlixMedia_All'>👉😁😁👈</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply_photo(photo='https://telegra.ph/file/d3c95101c42beb4dd6f99.jpg', caption="<b>Known as: <code>Auto-Filter/Media-Search Bot</code>\nDeveloper : <a href='https://t.me/CLaY995'>CLAEY</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://t.me/Oomban_ULLATH'>Click here</a>\nUpdate Channel : <a href='https://t.me/PrimeFlixMedia_All'>👉😁😁👈</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 @Client.on_message(filters.command('mal_help'))
 async def mal_help(bot, message):
@@ -232,4 +233,4 @@ async def help(bot, message):
             InlineKeyboardButton('Home', callback_data='start')
         ]
         ]
-    await message.reply(HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply_photo(photo='https://telegra.ph/file/70c8843dc97a1ea3a1237.jpg', caption=HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
