@@ -1,11 +1,14 @@
+# Code Edited by @CLaY995
 import os
 import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
+from sample_info import HELP_TEXT, MAL_HELP_TXT
 from utils import Media, get_file_details
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
+bot_logo = "https://telegra.ph/file/a78259e021cf8dba5335d.jpg"
 
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
@@ -66,8 +69,10 @@ async def start(bot, cmd):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('📡sʜᴀʀᴇ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats'),
-                        InlineKeyboardButton('Our-LinkZ', url='https://t.me/PrimeFlixMedia_All')
+                        InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats')
+                    ],
+                    [
+                        InlineKeyboardButton('📼 Channel Links 📼', url='https://t.me/PrimeFlixMedia_All')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -82,7 +87,7 @@ async def start(bot, cmd):
         invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL))
         await bot.send_message(
             chat_id=cmd.from_user.id,
-            text="**Please Join My Channel to use this Bot!**",
+            text="**Join My Channel to use this Bot!**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -92,22 +97,22 @@ async def start(bot, cmd):
             )
         )
     else:
-        await cmd.reply_text(
-            START_MSG,
-            parse_mode="Markdown",
-            disable_web_page_preview=True,
+        await cmd.reply_photo(
+            photo=bot_logo,
+            caption=START_MSG.format(cmd.from_user.mention),
+            parse_mode="html",
             reply_markup=InlineKeyboardMarkup(
                 [
+                    [
+                        InlineKeyboardButton("My CreatoR🧑‍💻", url="https://t.me/CLaY995")
+                    ],
                     [
                         InlineKeyboardButton("🔎 Search Here", switch_inline_query_current_chat=''),
                         InlineKeyboardButton("🔗 Our-LinkZ", url="https://t.me/PrimeFlixMedia_All")
                     ],
                     [
-                        InlineKeyboardButton("My-CreatoR🧑‍💻", url="https://t.me/CLaY995")
-                    ],
-                    [
-                        InlineKeyboardButton("About", callback_data="about"),
-                        InlineKeyboardButton("Group", url="https://t.me/PrimeFlix_Chats")
+                        InlineKeyboardButton("About 👤", callback_data="about"),
+                        InlineKeyboardButton("Help 💭", callback_data="help")
                     ],
                     [
                         InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/PFM_MediaSearchBot?startgroup=true")
@@ -135,7 +140,7 @@ async def channel_info(bot, message):
         else:
             text += '\n' + chat.title or chat.first_name
 
-    text += f'\n\n**Total:** {len(CHANNELS)}'
+    text += f'\n\n**🇹‌🇴‌🇹‌🇦‌🇱:** {len(CHANNELS)}'
 
     if len(text) < 4096:
         await message.reply(text)
@@ -153,7 +158,7 @@ async def total(bot, message):
     msg = await message.reply("Processing...⏳", quote=True)
     try:
         total = await Media.count_documents()
-        await msg.edit(f'📁 Total Files Saved: {total}')
+        await msg.edit(f'🇹‌🇴‌🇹‌🇦‌🇱‌ 🇫‌🇮‌🇱‌🇪‌🇸‌🗃️: {total}')
     except Exception as e:
         logger.exception('Failed to check total files')
         await msg.edit(f'Error: {e}')
@@ -207,3 +212,67 @@ async def bot_info(bot, message):
         ]
         ]
     await message.reply(text="<b>Developer : <a href='https://t.me/CLaY995'>CLAEY</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://t.me/Oomban_ULLATH'>Click here</a>\nUpdate Channel : <a href='https://t.me/PrimeFlixMedia_All'>👉😁😁👈</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
+@Client.on_message(filters.command('mal_help'))
+async def mal_help(bot, message):
+    buttons = [
+        [
+            InlineKeyboardButton('Home', callback_data='start')
+        ]
+        ]
+    await message.reply(MAL_HELP_TXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
+@Client.on_message(filters.command('help'))
+async def help(bot, message):
+    buttons = [
+        [
+            InlineKeyboardButton('Malayalam Translation 🌐', callback_data='mal_help')
+        ],
+        [
+            InlineKeyboardButton('Home', callback_data='start')
+        ]
+        ]
+    await message.reply(HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+
+@Client.on_message(filters.command(["me"]))
+async def mera_links(bot, message):
+    buttons = [
+        [
+            InlineKeyboardButton('Movies 🎞️:', callback_data='ignore'),
+            InlineKeyboardButton('🔘 Click Here', url='https://t.me/joinchat/dZmnXiQ5a2ViMWZl')
+        ],
+        [
+            InlineKeyboardButton('Series 🎬:', callback_data='ignore'),
+            InlineKeyboardButton('🔘 Click Here', url='https://t.me/joinchat/vz04fx0LgSI5MzZl')
+        ],
+        [
+            InlineKeyboardButton('🔗 Other Links 🔗', url='https://t.me/PrimeFlixMedia_All')
+        ],
+        [
+            InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats')
+        ]
+        ]
+    await message.reply(text='**PFM Links..👇✨. Join & Support ✨**', reply_markup=InlineKeyboardMarkup(buttons), parse_mode='markdown', disable_web_page_preview=True)
+
+@Client.on_message(filters.command(["reqformat"]))
+async def reqformat(bot, message):
+    req_txt = """
+<b>🎬 Movies/Series Request Format:</b>
+
+•</b> <code>'Movie Name' + YEAR</code>
+
+<b>👤 #Example:</b> 
+Avatar 2009
+Inception 2010
+Hush 2016
+
+⚠️ While Requesting always remember to send the correct Movie/Series Name. 
+💥 <b>#Tip</b>: Copy-Paste the Movie Name from Google.
+"""
+    buttons = [
+        [
+            InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats')
+        ]
+        ]
+    await message.reply(text=req_txt, reply_markup=InlineKeyboardMarkup(buttons), parse_mode="html", disable_web_page_preview=True)
+
