@@ -54,12 +54,6 @@ async def filter(client, message):
         up_search = search.upper()
         files = await get_filter_results(query=search)
         if files:
-            btn.append(
-                   [
-                       InlineKeyboardButton("🎥:MOVIES✅", url="https://t.me/joinchat/dZmnXiQ5a2ViMWZl"),
-                       InlineKeyboardButton("📽:SERIES✅", url="https://t.me/joinchat/vz04fx0LgSI5MzZl")
-                   ]
-               )
             for file in files:
                 file_id = file.file_id
                 filename = f"💽:[{get_size(file.file_size)}]📂{file.file_name}"
@@ -89,10 +83,10 @@ async def filter(client, message):
             if API_KEY:
                 poster=await get_poster(search)
             if poster:
-                await message.reply_photo(photo=poster, caption=f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n🌩️ 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All ‌‌‌‌‎ ­  ­ ", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_photo(photo=poster, caption=f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b> ‌‌‌‌‎ ­  ­ ", reply_markup=InlineKeyboardMarkup(buttons))
 
             else:
-                await message.reply_text(f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}‌‎\n🌩️ 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All ‌‌‌‌‎ ­  ­  ­  ­  ­", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_text(f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}‌‎\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b>‌‌‌‌‎ ­  ­  ­  ­  ­", reply_markup=InlineKeyboardMarkup(buttons))
             return
 
         data = BUTTONS[keyword]
@@ -108,9 +102,9 @@ async def filter(client, message):
         if API_KEY:
             poster=await get_poster(search)
         if poster:
-            await message.reply_photo(photo=poster, caption=f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n🌩️ 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All ‌‌‌‌‎ ­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(photo=poster, caption=f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b> ­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
         else:
-            await message.reply_text(f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n🌩️ 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All ‌‌‌‌‎ ­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_text(f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b> ­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
 
 @Client.on_message(filters.text & filters.group & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.group & filters.incoming)
 async def group(client, message):
@@ -127,12 +121,6 @@ async def group(client, message):
             BOT["username"]=nyva
         files = await get_filter_results(query=search)
         if files:
-            btn.append(
-                   [
-                       InlineKeyboardButton("🎥:MOVIES✅", url="https://t.me/joinchat/dZmnXiQ5a2ViMWZl"),
-                       InlineKeyboardButton("📽:SERIES✅", url="https://t.me/joinchat/vz04fx0LgSI5MzZl")
-                   ]
-               )
             for file in files:
                 file_id = file.file_id
                 filename = f"📀:[{get_size(file.file_size)}]📂{file.file_name}"
@@ -160,9 +148,9 @@ async def group(client, message):
             if API_KEY:
                 poster=await get_poster(search)
             if poster:
-                await message.reply_photo(photo=poster, caption=f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n🌩️ 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_photo(photo=poster, caption=f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b>  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
             else:
-                await message.reply_text(f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n‌\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n🌩️ 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All ­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_text(f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b>­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
             return
 
         data = BUTTONS[keyword]
@@ -178,9 +166,9 @@ async def group(client, message):
         if API_KEY:
             poster=await get_poster(search)
         if poster:
-            await message.reply_photo(photo=poster, caption=f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n🌩️ 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All   ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(photo=poster, caption=f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b>  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
         else:
-            await message.reply_text(f"🇵‌🇫‌🇲 ᶜʰᵃᵗˢ \n\n𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n🌩 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n© @PrimeFlixMedia_All ‌‌‌‌‎ ­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_text(f"𝐅𝐨𝐫: <b>{message.from_user.mention}</b>\n\n🎬 𝐌𝐨𝐯𝐢𝐞/𝐒𝐞𝐫𝐢𝐞𝐬: {up_search}\n📑 𝐓𝐨𝐭𝐚𝐥 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: {len(btn)}\n\n<b>© @NoDroid_Bots</b> ‌‌‌‌‎ ­  ­  ­  ­  ­  ", reply_markup=InlineKeyboardMarkup(buttons))
 
     
 def get_size(size):
@@ -287,15 +275,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "start":
             buttons = [
                 [
-                    InlineKeyboardButton("My-CreatoR🧑‍💻", url="https://t.me/CLaY995")
+                    InlineKeyboardButton("🤖 Other Bots", url="https://t.me/NoDroid_Bots")
                 ],
                 [
                     InlineKeyboardButton("🔎 Search Here", switch_inline_query_current_chat=''),
-                    InlineKeyboardButton("🔗 Our-LinkZ", url="https://t.me/PrimeFlixMedia_All")
+                    InlineKeyboardButton("⚙️ Support Group", url="https://t.me/NoDroid_Support")
                 ],
                 [
-                    InlineKeyboardButton("About", callback_data="about"),
-                    InlineKeyboardButton("Help", callback_data="help")
+                    InlineKeyboardButton("👤 About", callback_data="about"),
+                    InlineKeyboardButton("💭 Help", callback_data="help")
                 ],
                 [
                     InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/PFM_MediaSearchBot?startgroup=true")
@@ -306,14 +294,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "about":
             buttons = [
                 [
-                    InlineKeyboardButton('My LinkZ', url='https://t.me/PrimeFlixMedia_All'),
-                    InlineKeyboardButton('Source-Code', url='https://t.me/Oomban_ULLATH')
+                    InlineKeyboardButton('Update Channel', url='https://t.me/NoDroid_Bots')
                 ],
                 [
                     InlineKeyboardButton('Back', callback_data='start')
                 ]
                 ]
-            await query.message.edit(text="<b>🧑‍💻Creator : <a href='https://t.me/ClaeyZ_UBot'>CLÆ͜͡Ｙ</a>\n🤩Available to EVERYONE\n🌏Language : <code>Python3</code>\n📚Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n📋Source-Code : <a href='https://t.me/Oomban_ULLATH'>🔘Click here</a>\n📡Ma-Channel : <a href='https://t.me/PrimeFlixMedia_All'>PFM Links</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=False)
+            await query.message.edit(text="<b>🧑‍💻 Developer : <a href='https://t.me/NoDroid_Bots'>NoDroid Bots 🤖</a>\n🤩 Accessible to All\n🌏 Language : <code>Python3</code>\n📚 Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n📡 Support Group : <a href='https://t.me/NoDroid_Support'>NoDroid Support</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=False)
 
         elif query.data == "help":
             buttons = [
@@ -351,8 +338,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('📡sʜᴀʀᴇ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats'),
-                        InlineKeyboardButton('Our-LinkZ', url='https://t.me/PrimeFlixMedia_All')
+                        InlineKeyboardButton('📡Share & Support📡', url='https://t.me/share/url?url=%20https://t.me/NoDroid_Bots')
                     ]
                     ]
                 
@@ -383,8 +369,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"{title}"
                 buttons = [
                     [
-                        InlineKeyboardButton(' 📡sʜᴀʀᴇ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats'),
-                        InlineKeyboardButton('Our-LinkZ', url='https://t.me/PrimeFlixMedia_All')
+                        InlineKeyboardButton(' 📡Share & Support📡', url='https://t.me/share/url?url=%20https://t.me/NoDroid_Bots'),
                     ]
                     ]
                 
