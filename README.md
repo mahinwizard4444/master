@@ -1,6 +1,6 @@
 # Just an Updated Auto-Filter Bot.
-### [![telegram badge](https://img.shields.io/badge/@CLaY995-30302f?style=for-the-badge&logo=telegram)](https://t.me/CLaY995)
-# [![PFM](https://img.shields.io/badge/PrimeFlix-Channel-orange?style=for-the-badge&logo=telegram)](https://t.me/PrimeFlixMedia_All)  
+### [![telegram badge](https://img.shields.io/badge/@NoDroid_Support-30302f?style=for-the-badge&logo=telegram)](https://t.me/NoDroid_Support)
+# [![NoDroid](https://img.shields.io/badge/NoDroid_Bots-orange?style=for-the-badge&logo=telegram)](https://t.me/NoDroid_Bots)  
 
 ## Added Features ⚙️
 * Imdb posters for <b>AUTO-FILTER</b>.
@@ -10,11 +10,11 @@
 * Support Auto-Filter (Both in <b>PM</b> and in **GROUPS**)
 * Once files saved in Database , exists until you manually deletes. (No Worry if post gets deleted from source channel.)
 * Added **FORCE SUBSCRIBE** (Only channel subscribes can use the bot)
-* Ability to restrict groups(AUTH_GROUPS)
+* Ability to restrict groups(**AUTH_GROUPS**)
 
 ```bash
-JuZt EditeD by @CLaY995 🧑‍💻.
-NB: Not Created by Me 🤭.
+JuZt EditeD by @NoDroid_Bots 🧑‍💻.
+NB: Not Created by Us 🤭.
 
 # Special CreditZ to:
 SubinPs
@@ -25,7 +25,7 @@ Albert
 ## Installation
 
 ### Easy Way
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CLaY9950/Media-Search-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/NoDroidBots/MediaSearch-AutoFiilter_Bot)
 ### Hard Way
 
 ```bash
