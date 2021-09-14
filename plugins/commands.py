@@ -69,10 +69,7 @@ async def start(bot, cmd):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats')
-                    ],
-                    [
-                        InlineKeyboardButton('📼 Channel Links 📼', url='https://t.me/PrimeFlixMedia_All')
+                        InlineKeyboardButton('⚙️ Update Channel ⚙️', url='https://t.me/NoDroid_Bots')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -97,18 +94,18 @@ async def start(bot, cmd):
             )
         )
     else:
-        await cmd.reply_photo(
-            photo=bot_logo,
-            caption=START_MSG.format(cmd.from_user.mention),
+        await cmd.reply_text(
+            START_MSG.format(cmd.from_user.mention),
             parse_mode="html",
+            disable_web_page_preview=True
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("My CreatoR🧑‍💻", url="https://t.me/CLaY995")
+                        InlineKeyboardButton("🤖 Other Bots", url="https://t.me/NoDroid_Bots")
                     ],
                     [
                         InlineKeyboardButton("🔎 Search Here", switch_inline_query_current_chat=''),
-                        InlineKeyboardButton("🔗 Our-LinkZ", url="https://t.me/PrimeFlixMedia_All")
+                        InlineKeyboardButton("⚙️ Support Group", url="https://t.me/NoDroid_Support")
                     ],
                     [
                         InlineKeyboardButton("About 👤", callback_data="about"),
@@ -204,8 +201,7 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('Our-ChannelZ', url='https://t.me/PrimeFlixMedia_All'),
-            InlineKeyboardButton('Source-Code', url='https://t.me/Oomban_ULLATH')
+            InlineKeyboardButton('Update Channel', url='https://t.me/NoDroid_Bots')
         ],
         [
             InlineKeyboardButton('Back', callback_data='start')
@@ -234,26 +230,6 @@ async def help(bot, message):
         ]
     await message.reply(HELP_TEXT, reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
-@Client.on_message(filters.command(["me"]))
-async def mera_links(bot, message):
-    buttons = [
-        [
-            InlineKeyboardButton('Movies 🎞️:', callback_data='ignore'),
-            InlineKeyboardButton('🔘 Click Here', url='https://t.me/joinchat/dZmnXiQ5a2ViMWZl')
-        ],
-        [
-            InlineKeyboardButton('Series 🎬:', callback_data='ignore'),
-            InlineKeyboardButton('🔘 Click Here', url='https://t.me/joinchat/vz04fx0LgSI5MzZl')
-        ],
-        [
-            InlineKeyboardButton('🔗 Other Links 🔗', url='https://t.me/PrimeFlixMedia_All')
-        ],
-        [
-            InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats')
-        ]
-        ]
-    await message.reply(text='**PFM Links..👇✨. Join & Support ✨**', reply_markup=InlineKeyboardMarkup(buttons), parse_mode='markdown', disable_web_page_preview=True)
-
 @Client.on_message(filters.command(["reqformat"]))
 async def reqformat(bot, message):
     req_txt = """
@@ -267,11 +243,11 @@ Inception 2010
 Hush 2016
 
 ⚠️ While Requesting always remember to send the correct Movie/Series Name. 
-💥 <b>#Tip</b>: Copy-Paste the Movie Name from Google.
+<b>#Tip</b>: Copy-Paste the Movie Name from Google.
 """
     buttons = [
         [
-            InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats')
+            InlineKeyboardButton('📡Share & Support📡', url='https://t.me/share/url?url=%20https://t.me/NoDroid_Bots')
         ]
         ]
     await message.reply(text=req_txt, reply_markup=InlineKeyboardMarkup(buttons), parse_mode="html", disable_web_page_preview=True)
