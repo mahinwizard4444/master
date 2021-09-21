@@ -97,7 +97,7 @@ async def start(bot, cmd):
         await cmd.reply_text(
             START_MSG.format(cmd.from_user.mention),
             parse_mode="html",
-            disable_web_page_preview=True
+            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
