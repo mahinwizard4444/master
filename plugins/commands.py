@@ -96,7 +96,7 @@ async def start(bot, cmd):
     else:
         await cmd.reply_text(
             START_MSG.format(cmd.from_user.mention),
-            parse_mode="html",
+            parse_mode="markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -112,7 +112,7 @@ async def start(bot, cmd):
                         InlineKeyboardButton("Help 💭", callback_data="help")
                     ],
                     [
-                        InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/PFM_MediaSearchBot?startgroup=true")
+                        InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/NodMediaSearch_Bot?startgroup=true")
                     ]
                 ]
             )
