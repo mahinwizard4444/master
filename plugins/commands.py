@@ -69,10 +69,10 @@ async def start(bot, cmd):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/PrimeFlix_Chats')
+                        InlineKeyboardButton('📡sʜᴀʀᴇ & sᴜᴘᴘᴏʀᴛ📡', url='https://t.me/share/url?url=%20https://t.me/onlyseries76')
                     ],
                     [
-                        InlineKeyboardButton('📼 Channel Links 📼', url='https://t.me/PrimeFlixMedia_All')
+                        InlineKeyboardButton('📼 Channel Links 📼', url='https://t.me/onlymovie76')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -105,18 +105,18 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("My CreatoR🧑‍💻", url="https://t.me/CLaY995")
+                        InlineKeyboardButton("My CreatoR🧑‍💻", url="https://t.me/onlyseries76")
                     ],
                     [
                         InlineKeyboardButton("🔎 Search Here", switch_inline_query_current_chat=''),
-                        InlineKeyboardButton("🔗 Our-LinkZ", url="https://t.me/PrimeFlixMedia_All")
+                        InlineKeyboardButton("🔗 Our-LinkZ", url="https://t.me/onlymovie76")
                     ],
                     [
                         InlineKeyboardButton("About 👤", callback_data="about"),
                         InlineKeyboardButton("Help 💭", callback_data="help")
                     ],
                     [
-                        InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/PFM_MediaSearchBot?startgroup=true")
+                        InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/Captain_jac_k_sparrow_bot?startgroup=true")
                     ]
                 ]
             )
@@ -205,7 +205,7 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('Our-ChannelZ', url='https://t.me/PrimeFlixMedia_All'),
+            InlineKeyboardButton('Our-ChannelZ', url='https://t.me/onlymovie76'),
             InlineKeyboardButton('Source-Code', url='https://t.me/Oomban_ULLATH')
         ],
         [
