@@ -31,7 +31,7 @@ async def filter(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("♻️Join our Channel♻️", url=invite_link.invite_link)
+                            InlineKeyboardButton("🎬 Join our Channel 🎬", url=invite_link.invite_link)
                         ]
                     ]
                 ),
@@ -286,7 +286,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton("💭 Help", callback_data="help")
                 ],
                 [
-                    InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/?startgroup=true")
+                    InlineKeyboardButton("➕ Add me to Group ➕️", url="https://t.me/Captain_jac_k_sparrow_bot?startgroup=true")
                 ]
                 ]
             await query.message.edit(START_MSG.format(query.from_user.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode="html", disable_web_page_preview=True)
