@@ -34,7 +34,7 @@ async def start(bot, cmd):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("♻️Join the CHANNEL♻️", url=invite_link.invite_link)
+                                InlineKeyboardButton("🎬 Join the CHANNEL 🎬", url=invite_link.invite_link)
                             ],
                             [
                                 InlineKeyboardButton(" 🔄 Try Again", callback_data=f"checksub#{file_id}")
@@ -69,7 +69,7 @@ async def start(bot, cmd):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('⚙️ Update Channel ⚙️', url='https://t.me/NoDroid_Bots')
+                        InlineKeyboardButton('📺 series Channel 📺', url='https://t.me/onlyseries76')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -88,7 +88,7 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("♻️Join our CHANNEL♻️", url=invite_link.invite_link)
+                        InlineKeyboardButton("🎬 Join our CHANNEL 🎬", url=invite_link.invite_link)
                     ]
                 ]
             )
@@ -101,18 +101,18 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🤖 Other Bots", url="https://t.me/NoDroid_Bots")
+                        InlineKeyboardButton("🤖 our Bots", url="https://t.me/Astrong_Bots")
                     ],
                     [
                         InlineKeyboardButton("🔎 Search Here", switch_inline_query_current_chat=''),
-                        InlineKeyboardButton("⚙️ Support Group", url="https://t.me/NoDroid_Support")
+                        InlineKeyboardButton("📺 Series", url="https://t.me/onlyseries76")
                     ],
                     [
                         InlineKeyboardButton("About 👤", callback_data="about"),
                         InlineKeyboardButton("Help 💭", callback_data="help")
                     ],
                     [
-                        InlineKeyboardButton("➕Add me to Group✅", url="https://t.me/NodMediaSearch_Bot?startgroup=true")
+                        InlineKeyboardButton("➕ Add me to Group ➕️", url="https://t.me/Captain_jac_k_sparrow_bot?startgroup=true")
                     ]
                 ]
             )
@@ -201,13 +201,13 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('Update Channel', url='https://t.me/NoDroid_Bots')
+            InlineKeyboardButton('📺 Channel', url='https://t.me/onlyseries76')
         ],
         [
             InlineKeyboardButton('Back', callback_data='start')
         ]
         ]
-    await message.reply(text="<b>Developer : <a href='https://t.me/CLaY995'>CLAEY</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://t.me/Oomban_ULLATH'>Click here</a>\nUpdate Channel : <a href='https://t.me/PrimeFlixMedia_All'>👉😁😁👈</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply(text="<b>channels : <a href='https://t.me/onlymovie76'>Movie</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://t.me/Astrong_Bots'>Click here</a>\📺 Channel : <a href='https://t.me/Series'>Series</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 @Client.on_message(filters.command('mal_help'))
 async def mal_help(bot, message):
@@ -247,7 +247,7 @@ Hush 2016
 """
     buttons = [
         [
-            InlineKeyboardButton('📡Share & Support📡', url='https://t.me/share/url?url=%20https://t.me/NoDroid_Bots')
+            InlineKeyboardButton('💖 Share & Support 💖', url='https://t.me/share/url?url=%20https://t.me/onlymovie76')
         ]
         ]
     await message.reply(text=req_txt, reply_markup=InlineKeyboardMarkup(buttons), parse_mode="html", disable_web_page_preview=True)
